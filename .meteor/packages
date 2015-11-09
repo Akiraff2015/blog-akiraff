@@ -41,3 +41,5 @@ useraccounts:flow-routing
 arillo:flow-router-helpers
 twbs:bootstrap
 shmck:meteor-social-buttons
+aldeed:autoform
+aldeed:collection2

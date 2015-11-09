@@ -7,6 +7,25 @@
     background-color: black;
 }
 
+
 .wrap-dashboard{
-    margin-left: 170px;
+    margin-left: 200px;
+}
+
+.form-control {
+    width: 900px;
+}
+
+#wrap-button {
+    margin-top:20px;
+}
+
+#title-name li{
+    list-style: none;
+    font-size: 14px;
+}
+
+#wrap-content {
+    list-style: none;
+    font-size: 12px;
 }

@@ -1,0 +1,18 @@
+<template name="view_all_post">
+    <div class="wrap-dashboard">
+        <h1>View all post</h1>
+
+        <div class="wrap-content">
+            <ul>
+                {{#each posts}}
+                    <li>
+                        <div>
+                            <a href="/dashboard/posts/{{_id}}">{{title}}</a><br/>
+                            {{body}}
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>
