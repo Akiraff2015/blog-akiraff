@@ -6,8 +6,11 @@ global = FlowRouter.group({});
 
 global.route('/', {
     name: 'home',
+    subscriptions: function(params, queryParams) {
+        this.register('posts', Meteor.subscribe('posts'));
+    },
     action: function () {
-        return BlazeLayout.render('main_render', {top: 'main_public'});
+        return BlazeLayout.render('main_render', {top: 'main_public', bottom: 'view_all_post'});
     }
 });
 

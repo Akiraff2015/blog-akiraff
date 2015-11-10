@@ -6,10 +6,8 @@
             <ul>
                 {{#each posts}}
                     <li>
-                        <div>
-                            <a href="/dashboard/posts/{{_id}}">{{title}}</a><br/>
-                            {{body}}
-                        </div>
+                        <a href="/dashboard/posts/{{_id}}">{{title}}</a><br/>
+                        {{body}}
                     </li>
                 {{/each}}
             </ul>
