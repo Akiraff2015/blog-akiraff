@@ -4,10 +4,6 @@
 
 console.log("Test");
 
-$(document).ready(function() {
-    $('#summernote').summernote();
-});
-
 Template.new_post.events({
     'submit': function (e) {
         var postTitle = $("#post_title").val();
@@ -16,3 +12,10 @@ Template.new_post.events({
         e.preventDefault();
     }
 });
+
+Template.new_post.onRendered(function() {
+    $(document).ready(function() {
+       $('#wysiwyg_editor').summernote();
+    });
+});
+

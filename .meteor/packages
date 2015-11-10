@@ -44,3 +44,4 @@ shmck:meteor-social-buttons
 aldeed:autoform
 aldeed:collection2
 summernote:summernote
+accounts-ui

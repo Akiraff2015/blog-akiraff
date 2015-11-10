@@ -24,7 +24,7 @@ Schemas.Post = new SimpleSchema({
         autoform: {
             omit: true
         }
-    }
+    },
 });
 
 Posts.attachSchema(Schemas.Post);
