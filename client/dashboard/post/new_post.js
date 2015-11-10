@@ -4,6 +4,10 @@
 
 console.log("Test");
 
+$(document).ready(function() {
+    $('#summernote').summernote();
+});
+
 Template.new_post.events({
     'submit': function (e) {
         var postTitle = $("#post_title").val();
