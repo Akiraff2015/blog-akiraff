@@ -1,16 +1,29 @@
 <template name="view_all_post">
     <div class="wrap-dashboard">
-        <h1>View all post</h1>
-
-        <div class="wrap-content">
-            <ul>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th><h3>Post</h3></th>
+                    <th><h3>Author</h3></th>
+                    <th><h3>Description</h3></th>
+                    <th><h3>Date</h3></th>
+                    <th><h3>Edit/Delete</h3></th>
+                </tr>
+                </thead>
                 {{#each posts}}
-                    <li>
-                        <a href="/dashboard/posts/{{_id}}">{{title}}</a><br/>
-                        {{body}}
-                    </li>
-                {{/each}}
-            </ul>
+                <tbody>
+                    <tr>
+                        <th><a href="/dashboard/posts/{{_id}}">{{title}}</a></th>
+                        <th>Lorem Ipsum</th>
+                        <th>{{body}}</th>
+                        <th>DD/MM/YYYY</th>
+                        <!--<th><a href="#">Edit</a>/<a href="#" class="deleteBtn">Delete</a></th>-->
+                        <th><a href="#" class="editBtn">Edit</a>/<a href="" class="deleteBtn">Delete</a></th>
+                    </tr>
+                </tbody>
+            {{/each}}
+            </table>
         </div>
     </div>
 </template>

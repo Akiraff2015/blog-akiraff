@@ -1,6 +1,14 @@
+<!--Single post-->
 <template name="post">
     <div class="wrap-dashboard">
-        Title: {{post.title}}
-        Content: {{post.body}}
+        <div class="panel panel-default" style="width:900px">
+            <div class="panel-heading">
+                <div class="panel-title"><h1>{{post.title}}</h1></div>
+            </div>
+            <div class="panel-body">
+                <p>{{post.body}}</p>
+                    <a class="btn btn-primary btn-md" href="/dashboard/view_post" role="button">Go back previous page</a>
+            </div>
+        </div>
     </div>
 </template>

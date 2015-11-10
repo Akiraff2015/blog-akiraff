@@ -12,3 +12,10 @@ Template.new_post.events({
         e.preventDefault();
     }
 });
+
+Template.new_post.onRendered(function() {
+    $(document).ready(function() {
+       $('#wysiwyg_editor').summernote();
+    });
+});
+
