@@ -1,9 +1,5 @@
 <template name="new_post">
     <div class="wrap-dashboard">
-        <div class ="col-md-8">
-
-        </div>
-        <div id="summernote">Hello Summernote</div>
         <form class="form-horizontal">
             <div class="form-group">
                 <label class="control-label">Title</label>
@@ -13,12 +9,16 @@
                 <!--<div id="wysiwyg_editor">Editor</div>-->
                 <textarea class="post_content form-control" rows="3" placeholder="Write anything..."></textarea>
                 <!--<div id="wysiwyg_editor"></div>-->
-
-                <textarea class="post_content form-control" rows="3" name="summernote" id="wysiwyg_editor"></textarea>
-
                 <div id = "wrap-button">
                     <button type="submit" class="btn btn-primary">Submit new post</button>
                 </div>
+
+                <hr><hr>
+                <br>
+                <div class ="col-md-9">
+                    <textarea class="post_content form-control" rows="3" name="summernote" id="wysiwyg_editor"></textarea>
+                </div>
+
             </div>
         </form>
     </div>
