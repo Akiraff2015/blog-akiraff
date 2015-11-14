@@ -1,0 +1,18 @@
+<template name="edit_post">
+    <div class="container">
+        <form class="form-horizontal">
+            <div class="form-group">
+                {{#with post}}
+                    <label class="control-label">Title</label>
+                    <input id="post_title" type="text" class="form-control" value="{{title}}">
+
+                    <label class="control-label">Edit post</label>
+
+                    <div id="post_content">{{postHtml}}</div>
+
+                    <button type="submit" class="btn btn-primary">Edit Post</button>
+                {{/with}}
+            </div>
+        </form>
+    </div>
+</template>

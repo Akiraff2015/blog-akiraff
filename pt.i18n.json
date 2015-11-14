@@ -1,0 +1,21 @@
+{
+  //navbar.html
+  "Home": "Pagina Inicial",
+  "Team": "Funcionários",
+  "Dashboard": "Painel de Instrumentos",
+  "View-All-Post": "Ver Todos os Postagem",
+  "Search-For-Any-Post": "Pesquisar qualquer postagem",
+  "Search": "Pesquisar",
+  "Language": "Idioma",
+  "English": "Inglês",
+  "Portuguese": "Português",
+  "Japanese": "Japonês",
+  "Logout": "Deslogar",
+  "Login": "Conecte-se",
+
+  //new_post.html
+  "Title": "Título",
+  "Example-Title": "Exemplo Título",
+  "New-Post": "Novo Postagem",
+  "Submit-New-Post": "Enviar Novo Postagemt"
+}

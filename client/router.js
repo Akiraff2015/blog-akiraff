@@ -1,66 +1,82 @@
-/**
- * Created by akiraff on 11/7/15.
- */
+blog = FlowRouter.group({
+    prefix: '/blog',
+    triggersEnter: [function(context, redirect) {
+        if (Meteor.userId()) {
+            var userModel = Meteor.users.findOne({_id: Meteor.userId()}, {fields: {username: 1, language: 1, roles: 1}});
+            TAPi18n.setLanguage(userModel ? userModel.language : "en");
+        }
+    }]
+});
 
-global = FlowRouter.group({});
-
-global.route('/', {
-    name: 'home',
-    subscriptions: function(params, queryParams) {
+blog.route('/', {
+    subscriptions: function (params, queryParams) {
         this.register('posts', Meteor.subscribe('posts'));
+        this.register('usernames', Meteor.subscribe('usernames'));
     },
     action: function () {
-        return BlazeLayout.render('main_render', {top: 'main_public', bottom: 'view_all_post'});
+        return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'home'});
     }
 });
 
-global.route('/dashboard', {
-    name: 'dashboard',
+blog.route('/login', {
     action: function () {
-        return BlazeLayout.render('dashboard_render', {top: 'main_public', left: 'dashboard'});
-    }
-});
-
-global.route('/dashboard/new_post', {
-    name: 'new_post',
-    subscriptions: function(params, queryParams) {
-        this.register('posts', Meteor.subscribe('posts'));
+        return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'login'});
     },
-    action: function () {
-        return BlazeLayout.render('dashboard_render', {top: 'main_public', left: 'dashboard', right: 'new_post'});
-    }
+    triggersEnter: [function (context, redirect) {
+        if (Meteor.loggingIn() || Meteor.user() != null) {
+            FlowRouter.go("/blog");
+        }
+    }]
 });
 
-global.route('/dashboard/view_post', {
-    name: 'view_all_post',
-    subscriptions: function(params, queryParams) {
-        this.register('posts', Meteor.subscribe('posts'));
-    },
-    action: function () {
-        return BlazeLayout.render('dashboard_render', {top: 'main_public', left: 'dashboard', right: 'view_all_post'});
-    }
-});
-
-global.route('/dashboard/posts/:postId', {
-    name: 'post',
-    subscriptions: function(params, queryParams) {
-        this.register('posts', Meteor.subscribe('posts'), params.postId);
+blog.route('/post/:postSlug', {
+    subscriptions: function (params, queryParams) {
+        this.register('posts', Meteor.subscribe('posts', params.postSlug));
     },
     action: function (params) {
-        return BlazeLayout.render('dashboard_render', {top: 'main_public', left: 'dashboard', right: 'post'});
+        return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'post'});
     }
 });
 
-global.route('/jp', {
-    name: 'japanese-blog',
+// Admin Panel
+var adminRoute = blog.group({
+    prefix: '/admin',
+    name: 'admin',
+    triggersEnter: [function (context, redirect) {
+        if (!Roles.userIsInRole(Meteor.user(), ['admin', 'editor'])) {
+            FlowRouter.go("/blog");
+        }
+    }]
+});
+
+var adminPostsRoute = adminRoute.group({
+    prefix: '/posts'
+});
+
+adminPostsRoute.route('/', {
+    subscriptions: function (params, queryParams) {
+        this.register('posts', Meteor.subscribe('posts'));
+        this.register('usernames', Meteor.subscribe('usernames'));
+    },
     action: function () {
-        return BlazeLayout.render('main_render', {main: 'main_public'});
+        return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'posts'});
     }
 });
 
-global.route('/pt', {
-    name: 'portuguese-blog',
+adminPostsRoute.route('/new', {
+    subscriptions: function (params, queryParams) {
+        this.register('posts', Meteor.subscribe('posts'));
+    },
     action: function () {
-        return BlazeLayout.render('main_render', {main: 'main_public'});
+        return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'new_post'});
+    }
+});
+
+adminPostsRoute.route('/edit/:postSlug', {
+    subscriptions: function (params, queryParams) {
+        this.register('posts', Meteor.subscribe('posts', params.postSlug));
+    },
+    action: function (params) {
+        return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'edit_post'});
     }
 });

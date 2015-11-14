@@ -1,0 +1,32 @@
+{
+  //navbar.html
+  "Home": "Home",
+  "Team": "Team",
+  "Dashboard": "Dashboard",
+  "View-All-Post": "View All Post",
+  "Search-For-Any-Post": "Search for any post",
+  "Search": "Search",
+  "Language": "Language",
+  "English": "English",
+  "Portuguese": "Portuguese",
+  "Japanese": "Japanese",
+  "Logout": "Logout",
+  "Login": "Login",
+
+  //new_post.html
+  "Title": "Title",
+  "Example-Title": "Example Title",
+  "New-Post": "New Post",
+  "Submit-New-Post": "Submit New Post",
+
+  //posts.html
+  "Post": "Post",
+  "Author": "Author",
+  "Created-At": "Created At",
+  "Modified-At": "Modified At",
+  "Edit": "Edit",
+  "Delete": "Delete",
+
+  //home.html
+  "By": "By"
+}

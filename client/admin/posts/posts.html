@@ -1,0 +1,27 @@
+<template name="posts">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><h3>{{_ "Post"}}</h3></th>
+                <th><h3>{{_ "Author"}}</h3></th>
+                <th><h3>{{_ "Created-At"}}</h3></th>
+                <th><h3>{{_ "Modified-At"}}</h3></th>
+            </tr>
+            </thead>
+            {{#each posts}}
+                <tbody>
+                <tr>
+                    <th><a href="/blog/post/{{slug}}">{{title}}</a></th>
+                    <th>{{authorName}}</th>
+                    <th>{{createdAt}}</th>
+                    <th>{{modifiedAt}}</th>
+                    <th><a href="/blog/admin/posts/edit/{{slug}}" class="editBtn">{{_ "Edit"}}</a>/<a
+                            href="#" class="deleteBtn">{{_ "Delete"}}</a>
+                    </th>
+                </tr>
+                </tbody>
+            {{/each}}
+        </table>
+    </div>
+</template>

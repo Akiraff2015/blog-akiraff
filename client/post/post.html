@@ -1,0 +1,16 @@
+<!--Single post-->
+<template name="post">
+    <div class="container">
+        {{#with post}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><h1>{{title}}</h1></div>
+                </div>
+                <div class="panel-body">
+                    <p>{{postHtml}}</p>
+                    <a class="btn btn-primary btn-md" href="/blog" role="button">Back to Home Page</a>
+                </div>
+            </div>
+        {{/with}}
+    </div>
+</template>

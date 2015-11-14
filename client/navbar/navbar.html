@@ -1,0 +1,71 @@
+<template name="navbar">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Blog</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/blog">{{_ "Home"}}</a></li>
+                    <li><a href="/blog/team">{{_ "Team"}}</a></li>
+
+                    {{#if isInRole 'admin, editor'}}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="true">{{_ "Dashboard"}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/blog/admin/posts/new"><span class="glyphicon glyphicon-plus-sign"
+                                                                          aria-hidden="true"></span>{{_ "New-Post"}}</a>
+                                </li>
+                                <li><a href="/blog/admin/posts"><span class="glyphicon glyphicon-search"
+                                                                      aria-hidden="true"></span> {{_ "View-All-Post"}}
+                                </a></li>
+                            </ul>
+                        </li>
+                    {{/if}}
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="{{_ "Search-For-Any-Post"}}"/>
+                            </div>
+                            <button type="submit" class="btn btn-default">{{_ "Search"}}</button>
+                        </form>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{_ "Language"}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="" class="lang" data-lang="en">{{_ "English"}}</a></li>
+                            <li><a href="" class="lang" data-lang="pt">{{_ "Portuguese"}}</a></li>
+                            <li><a href="" class="lang" data-lang="jp">{{_ "Japanese"}}</a></li>
+                        </ul>
+                    </li>
+
+                    {{#if currentUser}}
+                        {{#with currentUser}}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true"
+                                   aria-expanded="false"><span class="glyphicon glyphicon-user"
+                                                               aria-haspopup="true"> {{username}}</span><span
+                                        class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="" id="logoutBtn">{{_ "Logout"}}</a></li>
+                                </ul>
+                            </li>
+                        {{/with}}
+                    {{else}}
+                        <li><a href="/blog/login">{{_ "Login"}}</a></li>
+                    {{/if}}
+                    <li>{{> social_buttons}}</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>

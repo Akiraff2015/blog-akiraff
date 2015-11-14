@@ -2,13 +2,17 @@
  * Created by Akiraff on 11/9/15.
  */
 
-Posts = new Mongo.Collection('post');
 var Schemas = {};
+Posts = new Mongo.Collection('post');
 
 Schemas.Post = new SimpleSchema({
     title: {
         type: String,
         label: 'Title'
+    },
+    slug: {
+        type: String,
+        label: 'Permalink'
     },
     body: {
         type: String,
@@ -25,6 +29,18 @@ Schemas.Post = new SimpleSchema({
             omit: true
         }
     },
+    createdAt: {
+        type: Date,
+        autoform: {
+            omit: true
+        }
+    },
+    modifiedAt: {
+        type: Date,
+        autoform: {
+            omit: true
+        }
+    }
 });
 
 Posts.attachSchema(Schemas.Post);

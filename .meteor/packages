@@ -19,7 +19,6 @@ cfs:filesystem
 tomi:upload-server
 tomi:upload-jquery
 meteorhacks:kadira
-nemo64:bootstrap
 less
 mquandalle:jade
 standard-minifiers
@@ -39,9 +38,9 @@ check
 peppelg:bootstrap-3-modal
 useraccounts:flow-routing
 arillo:flow-router-helpers
-twbs:bootstrap
 shmck:meteor-social-buttons
 aldeed:autoform
 aldeed:collection2
 summernote:summernote
-accounts-ui
+twbs:bootstrap
+ian:accounts-ui-bootstrap-3

@@ -1,7 +1,11 @@
-Meteor.publish("posts", function (postId) {
-    if (postId) {
-        return Posts.find({_id: postId});
+Meteor.publish("posts", function (postSlug) {
+    if (postSlug) {
+        return Posts.find({slug: postSlug});
     } else {
         return Posts.find({});
     }
+});
+
+Meteor.publish("usernames", function() {
+    return Meteor.users.find({}, {fields: {username: 1}});
 });

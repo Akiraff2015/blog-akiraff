@@ -1,0 +1,20 @@
+<template name="home">
+    <div class="container">
+        {{#each posts}}
+            <div class="row">
+                <div class="col-lg-10">
+                    <h1><a href="/blog/post/{{slug}}">{{title}}</a></h1>
+
+                    <p class="lead">{{_ "By"}} <a href="#">{{authorName}}</a></p>
+                    <hr>
+
+                    <p><span class="glyphicon glyphicon-time"> {{createdAt}}</span></p>
+                    <hr>
+
+                    <p class="lead">{{postHtml}}</p>
+                    <hr>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</template>
