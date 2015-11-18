@@ -66,6 +66,7 @@ adminPostsRoute.route('/', {
 adminPostsRoute.route('/new', {
     subscriptions: function (params, queryParams) {
         this.register('posts', Meteor.subscribe('posts'));
+        this.register('images', Meteor.subscribe('images'));
     },
     action: function () {
         return BlazeLayout.render('main_render', {top: 'navbar', bottom: 'new_post'});

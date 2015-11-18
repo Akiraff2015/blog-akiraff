@@ -9,3 +9,7 @@ Meteor.publish("posts", function (postSlug) {
 Meteor.publish("usernames", function() {
     return Meteor.users.find({}, {fields: {username: 1}});
 });
+
+Meteor.publish("images", function() {
+    return Images.find({});
+});

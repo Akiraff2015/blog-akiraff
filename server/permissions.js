@@ -10,6 +10,18 @@ Posts.allow({
     }
 });
 
+Images.allow({
+    'insert': function (userId) {
+        return Roles.userIsInRole(userId, ['admin', 'editor']);
+    },
+    'update': function (userId) {
+        return Roles.userIsInRole(userId, ['admin', 'editor']);
+    },
+    'download': function() {
+        return true;
+    }
+});
+
 Meteor.users.allow({
     'update': function (userId, user, fields, modifier) {
         if (user._id === userId) {

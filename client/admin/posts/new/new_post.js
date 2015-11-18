@@ -43,6 +43,31 @@ Template.new_post.events({
 });
 
 Template.new_post.onRendered(function () {
-    $('#post_content').summernote();
+    //$('#post_content').summernote();
+    var template = this;
+
+    $(document).ready(function () {
+        $('#post_content').summernote({
+            height: 200,
+            onImageUpload: function (files) {
+                for (var i = 0, ln = files.length; i < ln; i++) {
+                    Images.insert(files[i], function (err, fileObj) {
+                        if (!err) {
+                            console.log(fileObj.url());
+                            template.autorun(function (c) {
+                                var imageUrl = Images.findOne(fileObj._id).url();
+                                if (imageUrl) {
+                                    $("#post_content").summernote('insertImage', imageUrl);
+                                    c.stop();
+                                }
+                            });
+                        } else {
+                            console.log(err);
+                        }
+                    });
+                }
+            }
+        });
+    });
 });
 
